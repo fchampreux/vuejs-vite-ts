@@ -6,6 +6,7 @@ import Footer from './components/Footer.vue';
 
 <template>
   <Header brand="Welcome home" />
+  <RouterView></RouterView>
   <div>
     <a href="https://vite.dev" target="_blank">
       <img src="./assets/images/vite.svg" class="logo" alt="Vite logo" />
@@ -14,6 +15,10 @@ import Footer from './components/Footer.vue';
       <img src="./assets/images/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
+  <br>
+    <RouterLink to="/">Home page</RouterLink> | 
+    <RouterLink to="/about">About page</RouterLink>
+  </br>
   <HelloWorld msg="Vite + Vue" />
   <Footer message="Good bye !" />
 </template>
