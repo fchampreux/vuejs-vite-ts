@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue';
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
+  <Header brand="Welcome home" />
   <div>
     <a href="https://vite.dev" target="_blank">
       <img src="./assets/images/vite.svg" class="logo" alt="Vite logo" />
@@ -12,6 +15,7 @@ import HelloWorld from './components/HelloWorld.vue';
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <Footer message="Good bye !" />
 </template>
 
 <style scoped>
