@@ -17,7 +17,7 @@ import Footer from './components/Footer.vue';
   </div>
   <br>
     <RouterLink to="/">Home page</RouterLink> | 
-    <RouterLink to="/about">About page</RouterLink>
+    <RouterLink to="/legal">Legal page</RouterLink>
   </br>
   <HelloWorld msg="Vite + Vue" />
   <Footer message="Good bye !" />
