@@ -1,10 +1,27 @@
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue';
+import Navigation from '@/components/Navigation.vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import { reactive } from 'vue';
+
+const languageArray = reactive(['en', 'de']);
 </script>
 
 <template>
+  <Nav></Nav>
+    <navbar>
+    <div class="lang-dropdown">
+      <select v-model="$i18n.locale">
+        <option v-for="(lang, i) in languageArray" :key="`lang${i}`" :value="lang">
+          {{ lang }}
+        </option>
+      </select>
+    </div>
+  </navbar>
+  <main>
+    <h1>{{ $t('message.welcome') }}</h1>
+  </main>
+
   <Header brand="Welcome home" />
   <RouterView></RouterView>
   <div>
@@ -24,6 +41,18 @@ import Footer from '@/components/Footer.vue';
 </template>
 
 <style scoped>
+navbar {
+  float: right;
+}
+
+main {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

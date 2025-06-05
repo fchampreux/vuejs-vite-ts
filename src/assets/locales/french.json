@@ -1,0 +1,14 @@
+{
+  "messages":{
+     "welcome":"Bonjour",
+     "nav":{
+        "home":"Accueil",
+        "legal":"Mentions légales",
+        "community":"Communauté",
+        "education":"Formation",
+        "searchResults":"Résultats de recherche",
+        "services":"Services",
+        "solutions":"Solutions"
+     }
+  }
+}

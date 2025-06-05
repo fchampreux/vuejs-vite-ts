@@ -1,0 +1,15 @@
+{
+  "messages": {
+    "welcome": "Hello",
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "legal": "Legal",
+      "community": "Community",
+      "education": "Education",
+      "searchResults": "Search results",
+      "services": "Services",
+      "solutions": "Solutions"
+    }
+  }
+}
