@@ -14,9 +14,9 @@ const props = withDefaults(defineProps<Props>(), {
   title: 'Right Panel',
   content: '',
   showBorder: true,
-  width: '300px',
-  theme: 'auto',
-  closeable: false
+  width: '380px',
+  theme: 'light',
+  closeable: true
 });
 
 const emit = defineEmits<{
@@ -63,7 +63,9 @@ const close = () => {
       <Transition name="fade">
         <div class="pane-content" v-show="!isCollapsed">
           <slot>
-            {{ content }}
+            <div class="content-wrapper">
+              {{ content }}
+            </div>
           </slot>
         </div>
       </Transition>
@@ -74,34 +76,42 @@ const close = () => {
 <style scoped>
 .right-pane {
   background-color: #ffffff;
-  height: 100%;
-  padding: 1rem;
+  height: 100vh;
   transition: all 0.3s ease;
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  overflow-y: auto;
 }
 
 .with-border {
-  border-left: 1px solid #e2e8f0;
-  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
+  border-left: 1px solid #e5e7eb;
+  box-shadow: -4px 0 6px rgba(0, 0, 0, 0.05);
 }
 
 .pane-header {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  padding: 1.25rem;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .pane-header h2 {
   margin: 0;
-  font-size: 1.25rem;
-  color: #2d3748;
+  font-size: 1.125rem;
+  color: #111827;
   font-weight: 600;
+  line-height: 1.5;
 }
 
 .pane-controls {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .control-btn {
@@ -109,23 +119,32 @@ const close = () => {
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  color: #4a5568;
+  color: #6b7280;
   transition: all 0.2s ease;
-  border-radius: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 
 .control-btn:hover {
-  background-color: #f7fafc;
-  color: #2d3748;
+  background-color: #f3f4f6;
+  color: #111827;
 }
 
 .close-btn:hover {
-  background-color: #fed7d7;
-  color: #c53030;
+  background-color: #fee2e2;
+  color: #b91c1c;
 }
 
 .pane-content {
   transition: all 0.3s ease;
+}
+
+.content-wrapper {
+  padding: 1.25rem;
 }
 
 /* Transitions */
@@ -150,64 +169,53 @@ const close = () => {
 }
 
 /* Theme variations */
-.theme-light {
-  background-color: #ffffff;
+.theme-dark {
+  background-color: #1f2937;
 }
 
-.theme-dark {
-  background-color: #1a1a1a;
+.theme-dark .pane-header {
+  background-color: #1f2937;
+  border-bottom-color: #374151;
 }
 
 .theme-dark .pane-header h2 {
-  color: #e2e8f0;
+  color: #f3f4f6;
 }
 
 .theme-dark .control-btn {
-  color: #a0aec0;
+  color: #9ca3af;
 }
 
 .theme-dark .control-btn:hover {
-  background-color: #2d3748;
-  color: #e2e8f0;
+  background-color: #374151;
+  color: #f3f4f6;
 }
 
 .theme-dark .close-btn:hover {
-  background-color: #742a2a;
-  color: #feb2b2;
+  background-color: #7f1d1d;
+  color: #fecaca;
 }
 
 .theme-dark.with-border {
-  border-left: 1px solid #2d3748;
-  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
+  border-left-color: #374151;
+  box-shadow: -4px 0 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Auto theme (system preference) */
-@media (prefers-color-scheme: dark) {
-  .right-pane {
-    background-color: #1a1a1a;
-  }
+/* Scrollbar styling */
+.right-pane::-webkit-scrollbar {
+  width: 6px;
+}
 
-  .pane-header h2 {
-    color: #e2e8f0;
-  }
+.right-pane::-webkit-scrollbar-track {
+  background: transparent;
+}
 
-  .control-btn {
-    color: #a0aec0;
-  }
+.right-pane::-webkit-scrollbar-thumb {
+  background-color: #e5e7eb;
+  border-radius: 3px;
+}
 
-  .control-btn:hover {
-    background-color: #2d3748;
-    color: #e2e8f0;
-  }
-
-  .close-btn:hover {
-    background-color: #742a2a;
-    color: #feb2b2;
-  }
-
-  .with-border {
-    border-left: 1px solid #2d3748;
-    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
-  }
+.theme-dark .right-pane::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
 }
 </style>
