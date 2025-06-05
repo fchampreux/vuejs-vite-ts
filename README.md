@@ -7,7 +7,11 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 # Steps 
 
 ## Tree structure
-src |
+
+From project root:
+
+    src
+    |
     |-assets
     |       |-images
     |       |-locales
